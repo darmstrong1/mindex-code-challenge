@@ -37,7 +37,14 @@ public class EmployeeController {
     public Employee update(@PathVariable String id, @RequestBody Employee employee) {
         LOG.debug("Received employee create request for id [{}] and employee [{}]", id, employee);
 
-        employee.setEmployeeId(id);
+        employee = new Employee(
+                id,
+                employee.firstName(),
+                employee.lastName(),
+                employee.position(),
+                employee.department(),
+                employee.directReports()
+        );
         return employeeService.update(employee);
     }
 }
