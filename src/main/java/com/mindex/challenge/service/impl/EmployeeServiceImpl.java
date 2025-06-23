@@ -37,12 +37,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee read(String id) {
-        LOG.debug("Creating employee with id [{}]", id);
+        LOG.debug("Finding employee with id [{}]", id);
 
         var employee = employeeRepository.findByEmployeeId(id);
 
         if (employee == null) {
-            throw new RuntimeException("Invalid employeeId: " + id);
+            // I usually prefer IllegalStateException for situations like this.
+            throw new IllegalStateException("Invalid employeeId: " + id);
         }
 
         // I decided against this because of potential performance issues (N+1 query problem, network overhead, etc)

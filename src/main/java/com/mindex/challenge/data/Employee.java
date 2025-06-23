@@ -3,6 +3,15 @@ package com.mindex.challenge.data;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Domain object for Employee.
+ * @param employeeId
+ * @param firstName
+ * @param lastName
+ * @param position
+ * @param department
+ * @param directReports
+ */
 public record Employee(
     String employeeId,
     String firstName,
